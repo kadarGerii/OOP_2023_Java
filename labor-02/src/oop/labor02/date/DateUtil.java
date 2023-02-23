@@ -1,5 +1,10 @@
 package oop.labor02.date;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DateUtil {
     public static boolean leapYear(int year){
         if(year % 4 == 0){
@@ -13,25 +18,15 @@ public class DateUtil {
         return false;
     }
     public static boolean isValidDate(int year, int month, int day){
-        if(year > 0){
-            if(month > 0 && month <= 12){
-                if(leapYear(year) && month == 2){
-                    if(day > 0 && day <= 29)
-                        return true;
-                }
-                else if(!leapYear(year) && month == 2){
-                    if (day > 0 && day <= 28)
-                        return true;
-                }
-                else if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
-                    if(day <= 31 && day > 0){
-                    return true;
-                }
-                else if(month != 2 && day > 0 && day <= 30)
-                    return true;
-
-            }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        dateFormat.setLenient(false);
+        String date = String.valueOf(year) + "/" + String.valueOf(month) + "/" + String.valueOf(day);
+        try{
+            Date javaDate = dateFormat.parse(date);
         }
-        return false;
+        catch (ParseException e){
+            return false;
+        }
+        return true;
     }
 }

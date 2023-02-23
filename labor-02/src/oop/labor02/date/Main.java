@@ -1,5 +1,4 @@
 package oop.labor02.date;
-import oop.labor02.date.DateUtil;
 
 import java.util.Random;
 
@@ -10,18 +9,23 @@ public class Main {
             System.out.println(date1.toString());
         }
         else System.out.println("Error! Invalid date!");*/
+
+
         int invalidCounter = 0;
         Random random = new Random();
         MyDate [] date = new MyDate[1000];
         for (int i = 0; i < 1000; i++) {
-            int y = random.nextInt();
-            int m = random.nextInt() % 100 - 50;
-            int d = random.nextInt() % 200 - 100;
+            int y = random.nextInt(3000);
+            int m = random.nextInt(12);
+            int d = random.nextInt(31);
             date[i] = new MyDate(y, m, d);
             if(DateUtil.isValidDate(y, m, d))
                 System.out.println(date[i].toString());
-            else invalidCounter++;
+            else {
+                invalidCounter++;
+            }
         }
         System.out.println("Number of invalid dates generated: " + invalidCounter);
+
     }
 }
