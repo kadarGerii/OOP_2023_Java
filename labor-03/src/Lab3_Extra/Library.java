@@ -1,5 +1,6 @@
 package Lab3_Extra;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -14,10 +15,16 @@ public class Library extends Book{
         this.books = books;
         this.name = name;
     }
-    public void sortByAuthorAndPages(){
-        Arrays.sort(books);
-    }
     public void addBook(Book books){
-        
+
+    }
+    public void checkOut(Book books){
+        books.setCheckedOut(true);
+    }
+    public void returnBook(Book books){
+        books.setCheckedOut(false);
+    }
+    int countBooks(){
+        return books.length;
     }
 }
