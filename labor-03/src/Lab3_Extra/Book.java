@@ -1,5 +1,7 @@
 package Lab3_Extra;
 
+import java.util.Objects;
+
 public class Book {
     final private String author;
     private int numPages;
@@ -7,12 +9,25 @@ public class Book {
     private boolean checkedOut;
     private String isbn;
 
-    public Book(String author, int numPages, String title, boolean checkedOut, String isbn) {
+    public Book(String author, int numPages, String title) {
         this.author = author;
         this.numPages = numPages;
         this.title = title;
-        this.checkedOut = checkedOut;
-        this.isbn = isbn;
+        this.checkedOut = false;
+        this.isbn = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(author, book.author) && Objects.equals(title, book.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, title);
     }
 
     public String getAuthor() {

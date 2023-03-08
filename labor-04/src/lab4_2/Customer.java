@@ -1,26 +1,19 @@
-package lab3_2;
+package lab4_2;
 
-import lab3_1.BankAccount;
+import java.util.ArrayList;
 
 class Customer extends BankAccount {
     private final String firstName;
     private String lastName;
-    private int numAccount;
-    public static final int MAX_ACCUNTS = 10;
-    private BankAccount[] accounts = new BankAccount[MAX_ACCUNTS];
+    private ArrayList<BankAccount> accounts = new ArrayList<>();
 
-    private int numAccounts;
     public Customer(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.numAccounts = 0;
     }
 
     public void addAcount(BankAccount account) {
-        if(accounts.length < MAX_ACCUNTS){
-            accounts[accounts.length-1] = account;
-            numAccount ++;
-        }
+            accounts.add(account);
     }
 
     public BankAccount getAccount(String accountNumber) {
@@ -32,7 +25,7 @@ class Customer extends BankAccount {
     }
 
     public int getNumAccounts() {
-        return this.numAccounts;
+        return this.accounts.size();
     }
     public String getLastName() {
         return lastName;
@@ -46,19 +39,18 @@ class Customer extends BankAccount {
         return firstName;
     }
     public void closeAccount(String accountNumber){
-        for (int i = 0; i < getNumAccounts(); ++i) {
-            if (accountNumber.equals(accounts[i].getAccountNumber())){
-                accounts[i] = accounts[getNumAccounts()-1];
-                numAccount--;
+        for(BankAccount item:accounts){
+            if(item.getAccountNumber().equals(accountNumber)){
+                accounts.remove(accounts.indexOf(item));
+                break;
             }
-
         }
     }
     public String toString() {
         StringBuffer result = new StringBuffer();
         result.append(firstName + ' ' + lastName + " accounts:\n");
-        for(int i=0; i<numAccounts; ++i){
-            result.append( "\t" + accounts[i] +"\n");
+        for(BankAccount a:accounts){
+            result.append( "\t" + a +"\n");
         }
         return result.toString();
     }
