@@ -17,7 +17,6 @@ public class Library {
 
     public void addBook(Book books) {
         this.books.add(this.books.size(), books);
-        this.books.ensureCapacity(this.books.size() + 1);
     }
 
     public void removeBook(Book book) {
@@ -48,5 +47,8 @@ public class Library {
             }
         }
         return null;
+    }
+    public String toString() {
+        return books.toString();
     }
 }

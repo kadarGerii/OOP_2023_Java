@@ -9,9 +9,9 @@ public class Book {
     private boolean checkedOut;
     private String isbn;
 
-    public Book(String author, int numPages, String title) {
+    public Book(String author, String title) {
         this.author = author;
-        this.numPages = numPages;
+        this.numPages = 0;
         this.title = title;
         this.checkedOut = false;
         this.isbn = null;

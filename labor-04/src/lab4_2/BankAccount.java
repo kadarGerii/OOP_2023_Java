@@ -37,6 +37,6 @@ public class BankAccount {
         return true;
     }
     public String toString(){
-        return "Account number: " + getAccountNumber() + "\nBalance: " + eFormat.format(getBalance());
+        return "Account number: " + getAccountNumber() + "\n\tBalance: " + eFormat.format(getBalance());
     }
 }
