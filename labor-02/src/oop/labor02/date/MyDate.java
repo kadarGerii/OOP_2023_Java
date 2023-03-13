@@ -1,14 +1,17 @@
 package oop.labor02.date;
-import oop.labor02.date.DateUtil;
+
+import static oop.labor02.date.DateUtil.isValidDate;
 
 public class MyDate {
     int year;
     int month;
     int day;
     public MyDate(int year, int month, int day){
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        if(isValidDate(year, month, day)){
+            this.year = year;
+            this.month = month;
+            this.day = day;
+        }
     }
     public int getYear(){
         return this.year;
