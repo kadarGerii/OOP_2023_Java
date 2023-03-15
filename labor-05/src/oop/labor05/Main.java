@@ -17,10 +17,23 @@ public class Main {
         MyDate end = new MyDate(2023, 3, 25);
         Random random = new Random();
         double price = random.nextDouble();
-        Training tarining = new Training(course, start, end, price);
-        tarining.enrollStudent(student1);
-        tarining.enrollStudent(student2);
-        System.out.println(tarining);
+        Training training = new Training(course, start, end, price);
+        training.addStudent(student1);
+        training.addStudent(student2);
+        System.out.println(training);
+        ArrayList<Student> students = readStudents("students.csv");
+        System.out.println(students.size());
+        int i = 2;
+        while(i < 10){
+            int a = random.nextInt(students.size());
+            if(!training.enrollStudent(students.get(a))){
+                training.addStudent(students.get(a));
+                i++;
+            }
+        }
+        System.out.println("\n");
+        System.out.println(training);
+
     }
     private static ArrayList<Course> readCourses(String filename){
         ArrayList<Course> courses = new ArrayList<>();

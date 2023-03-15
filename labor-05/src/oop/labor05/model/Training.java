@@ -21,8 +21,16 @@ public class Training {
         this.endDate = endDate;
     }
     public boolean enrollStudent(Student student){
-        students.add(student);
-        return true;
+        if(students.contains(student)){
+            return true;
+        }
+        return false;
+
+    }
+    public void addStudent(Student student){
+        if(!enrollStudent(student)){
+            students.add(student);
+        }
     }
     public Student findStudentByID(Student student){
         for(Student s : students){
@@ -40,8 +48,10 @@ public class Training {
     }
     public void printToFile(){
         try {
-            FileWriter myWriter = new FileWriter("courseName_startdate_enddate.csv");
-            myWriter.write(getCourse().getName() + startDate + endDate);
+            String file = String.format("%s_%d.%d.%d_%d.%d.%d.csv", course.getName(), startDate.getYear(), startDate.getMonth(), startDate.getDay(), endDate.getYear(), endDate.getMonth(), endDate.getDay());
+            FileWriter myWriter = new FileWriter(file);
+            myWriter.write(getCourse().getName() + "\n");
+            myWriter.write(String.valueOf(students));
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
