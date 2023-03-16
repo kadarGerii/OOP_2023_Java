@@ -33,6 +33,7 @@ public class Main {
         }
         System.out.println("\n");
         System.out.println(training);
+        training.printToFile();
 
     }
     private static ArrayList<Course> readCourses(String filename){

@@ -1,4 +1,4 @@
-package models;
+package extra.models;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ public class Cousre {
     private DayOfWeek dayOfCourse;
     ArrayList<Student> enrolledStudents = new ArrayList<>();
 
-    public Cousre(Teacher teacher, int numberOfCredits, DayOfWeek dayOfCourse) {
+    public Cousre(String courseID, int numberOfCredits, DayOfWeek dayOfCourse) {
         this.numberOfCredits = numberOfCredits;
-        this.teacher = teacher;
+        this.courseID = courseID;
         this.dayOfCourse = dayOfCourse;
     }
 
@@ -53,8 +53,12 @@ public class Cousre {
         }
     }
     public String toString(){
-        return "Course: " + courseID + "\nTeacher: " + getTeacher() + "\nCredits: " + getNumberOfCredits()+"" +
-                "\nOccours every: " + getDayOfCourse() + "\nEnrolled students: " + getNumberOfEnrolledStudents()+"" +
-                "\n" + enrolledStudents;
+        StringBuffer result = new StringBuffer();
+        for(Student s : enrolledStudents){
+            result.append("\t" + s);
+        }
+        return "Course: " + courseID + "\n\tTeacher: " + getTeacher() + "\n\tCredits: " + getNumberOfCredits()+"" +
+                "\n\tOccours every: " + getDayOfCourse() + "\n\tEnrolled students: " + getNumberOfEnrolledStudents()+"" +
+                "\n" + result;
     }
 }

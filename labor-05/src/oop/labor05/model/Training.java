@@ -62,7 +62,11 @@ public class Training {
 
     @Override
     public String toString() {
+        StringBuffer result = new StringBuffer();
+        for(Student s : students){
+            result.append("\t" + s);
+        }
         return "Course: " + course +  "\n\tStart date: " + startDate +
-                "\n\tEnd date: " + endDate + "\n\tStudents:\n" + students;
+                "\n\tEnd date: " + endDate + "\n\tStudents: " + students.size() + "\n" + result;
     }
 }
