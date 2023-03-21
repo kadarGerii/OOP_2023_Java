@@ -35,6 +35,14 @@ public class Cousre {
     public ArrayList<Student> getEnrolledStudents() {
         return enrolledStudents;
     }
+
+    public Student searchStudentByNeptuneCode(String nepCode){
+        for(Student s:enrolledStudents){
+            if(s.getNeptunCode().equals(nepCode))
+                return s;
+        }
+        return null;
+    }
     public int getNumberOfEnrolledStudents(){
         return enrolledStudents.size();
     }
@@ -45,9 +53,9 @@ public class Cousre {
     public void enrollStudents(Student student){
         enrolledStudents.add(student);
     }
-    public void cancelEnrollmentStudent(String name){
+    public void cancelEnrollmentStudent(String neptuneCode){
         for(Student s : enrolledStudents){
-            if (s.getFirstName().equals(name)){
+            if (s.getNeptunCode().equals(neptuneCode)){
                 enrolledStudents.remove(s);
             }
         }

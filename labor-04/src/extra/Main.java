@@ -32,10 +32,20 @@ public class Main {
         System.out.println(cousre1);
         ArrayList<Cousre> courses = new ArrayList<>();
         courses = readFromCSVFile("university.csv");
-        for(Cousre c: courses){
+        ArrayList<Student> students = new ArrayList<>();
+        students = readStudents("students.csv");
+        /*for (Student s:students){
+            System.out.println(s.getNeptunCode()+","+s.getFirstName()+","+s.getLastName()+","+s.getMajor());
+            for (Cousre c:courses){
+                if(c.getEnrolledStudents().contains(c.searchStudentByNeptuneCode(s.getNeptunCode()))){
+                    System.out.print(c + " ");
+                }
+            }
+            System.out.println();
+        }*/
+        for (Cousre c:courses){
             System.out.println(c);
         }
-        System.out.println(Degree.getDegrees());
 
     }
     public static ArrayList<Cousre> readFromCSVFile(String fileName) {
@@ -97,5 +107,40 @@ public class Main {
             e.printStackTrace();
         }
         return courses;
+    }
+    public static ArrayList<Student> readStudents(String fileName){
+        ArrayList<Cousre> courses = new ArrayList<>();
+        courses = readFromCSVFile("university.csv");
+        ArrayList<Student> students = new ArrayList<>();
+        int counter = 0;
+        try(Scanner scanner = new Scanner(new File(fileName))){
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.isEmpty()) {
+                    continue;
+                }
+                String []item = line.split(",");
+                String ID = item[0].trim();
+                String fName = item[1].trim();
+                String lName = item[2].trim();
+                String major = item[3].trim();
+                students.add(new Student(ID, fName, lName, new Major(major)));
+                String line2 = scanner.nextLine();
+                String []item2 = line2.split(",");
+                for (int i = 0; i < item2.length; ++i){
+                    if(!item2[i].equals("")){
+                        for(Cousre c: courses){
+                            if (c.getCourseID().equals(item2[i])){
+                                c.enrollStudents(students.get(counter));
+                            }
+                        }
+                    }
+                }
+                ++counter;
+            }
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }
