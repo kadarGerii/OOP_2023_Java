@@ -33,18 +33,16 @@ public class Main {
         ArrayList<Cousre> courses = new ArrayList<>();
         courses = readFromCSVFile("university.csv");
         ArrayList<Student> students = new ArrayList<>();
-        students = readStudents("students.csv");
-        /*for (Student s:students){
+        students = readStudents("students.csv", courses);
+        for (Student s:students){
             System.out.println(s.getNeptunCode()+","+s.getFirstName()+","+s.getLastName()+","+s.getMajor());
             for (Cousre c:courses){
-                if(c.getEnrolledStudents().contains(c.searchStudentByNeptuneCode(s.getNeptunCode()))){
-                    System.out.print(c + " ");
+                if(c.getEnrolledStudents().contains(s)){
+                    System.out.print(c.getCourseID() + " ");
                 }
             }
             System.out.println();
-        }*/
-        for (Cousre c:courses){
-            System.out.println(c);
+            System.out.println();
         }
 
     }
@@ -108,9 +106,8 @@ public class Main {
         }
         return courses;
     }
-    public static ArrayList<Student> readStudents(String fileName){
-        ArrayList<Cousre> courses = new ArrayList<>();
-        courses = readFromCSVFile("university.csv");
+    public static ArrayList<Student> readStudents(String fileName, ArrayList<Cousre> courses){
+       // ArrayList<Cousre> courses = new ArrayList<>();
         ArrayList<Student> students = new ArrayList<>();
         int counter = 0;
         try(Scanner scanner = new Scanner(new File(fileName))){

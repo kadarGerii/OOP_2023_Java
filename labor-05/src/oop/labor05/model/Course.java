@@ -1,9 +1,9 @@
 package oop.labor05.model;
 
 public class Course {
-    private String name;
-    private String description;
-    private int numHours;
+    private final String name;
+    private final String description;
+    private final int numHours;
 
     public Course(String name, String description, int numHours) {
         this.name = name;

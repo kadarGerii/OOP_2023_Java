@@ -16,7 +16,7 @@ public class Main {
         MyDate start = new MyDate(2023, 3, 21);
         MyDate end = new MyDate(2023, 3, 25);
         Random random = new Random();
-        double price = random.nextDouble();
+        double price = 1000 + (2000 - 1000) * random.nextDouble();
         Training training = new Training(course, start, end, price);
         training.addStudent(student1);
         training.addStudent(student2);
