@@ -56,7 +56,7 @@ public class Customer {
 
     public String toString() {
         StringBuffer result = new StringBuffer();
-        result.append(id + ' ' + firstName + ' ' + lastName + " accounts:\n");
+        result.append(this.id +" " + this.firstName + " " + this.lastName + " accounts:\n");
         for(BankAccount a:accounts){
             result.append( "\t" + a +"\n");
         }

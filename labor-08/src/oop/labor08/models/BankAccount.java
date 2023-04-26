@@ -11,17 +11,18 @@ public class BankAccount {
     protected double balance;
     NumberFormat eFormat = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
-    public BankAccount(String accountNumber, int balance){
+    protected BankAccount(String accountNumber, int balance){
         this.accountNumber = accountNumber;
         this.balance = balance;
         ++numAccounts;
     }
-    public BankAccount(){
+    protected BankAccount(){
         ++numAccounts;
         this.accountNumber = createAccountNumber();
+        this.balance = 0;
     }
     public String createAccountNumber(){
-        return PREFIX + String.format("%7d", numAccounts);
+        return PREFIX + String.format("%07d", numAccounts);
     }
     public String getAccountNumber() {
         return accountNumber;
@@ -43,6 +44,6 @@ public class BankAccount {
         return true;
     }
     public String toString(){
-        return "Account number: " + getAccountNumber() + "\n\tBalance: " + eFormat.format(getBalance());
+        return "Account number: " + getAccountNumber() + "\n\t\tBalance: " + eFormat.format(getBalance());
     }
 }

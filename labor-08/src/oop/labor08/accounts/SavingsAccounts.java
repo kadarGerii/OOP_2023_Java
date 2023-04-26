@@ -19,4 +19,7 @@ public class SavingsAccounts extends BankAccount {
     public void addInterest(){
          super.balance += super.balance * interestRate;
     }
+    public String toString(){
+         return super.toString() + "\n\t\tInterest rate: " + this.getInterestRate();
+    }
 }

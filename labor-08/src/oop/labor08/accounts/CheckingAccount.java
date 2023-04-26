@@ -26,6 +26,6 @@ public class CheckingAccount extends BankAccount {
 
     @Override
     public String toString() {
-        return super.toString() + "\nOverdraft limit: " + this.getOverdraftLimit();
+        return super.toString() + "\n\t\tOverdraft limit: " + this.getOverdraftLimit();
     }
 }
