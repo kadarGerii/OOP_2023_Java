@@ -1,9 +1,6 @@
-package oop.labor09.queues;
+package oop.labor09.queues.models;
 
-import oop.labor09.interfaces.IQueue;
-
-import java.util.ArrayList;
-import java.util.List;
+import oop.labor09.queues.interfaces.IQueue;
 
 public class CircularQueue implements IQueue {
     private final int CAPACITY;

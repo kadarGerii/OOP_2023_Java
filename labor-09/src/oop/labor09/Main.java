@@ -1,12 +1,11 @@
 package oop.labor09;
 
-import oop.labor09.interfaces.IDictionary;
-import oop.labor09.interfaces.IQueue;
+import oop.labor09.models.interfaces.IDictionary;
 import oop.labor09.models.ArrayListDictionary;
-import oop.labor09.queues.ArrayListQueue;
 
-import java.util.Random;
 import java.util.Scanner;
+
+import static java.lang.String.valueOf;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,10 +36,10 @@ public class Main {
         System.out.println( q1.equals( q2 ));*/
         IDictionary arrayListDictionary = ArrayListDictionary.newInstance();
         Scanner scanner = new Scanner(System.in);
-        while( true ) {
+        while (true) {
             System.out.print("Word to find ( Enter <end> for exit): ");
             String word = scanner.nextLine();
-            if( word.equalsIgnoreCase( "end")){
+            if (word.equalsIgnoreCase("end")) {
                 break;
             }
             System.out.println(" Find(" + word + "): " + arrayListDictionary.find(word));

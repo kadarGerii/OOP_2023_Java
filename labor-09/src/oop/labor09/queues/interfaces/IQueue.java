@@ -1,4 +1,4 @@
-package oop.labor09.interfaces;
+package oop.labor09.queues.interfaces;
 
 public interface IQueue {
     boolean isEmpty();
