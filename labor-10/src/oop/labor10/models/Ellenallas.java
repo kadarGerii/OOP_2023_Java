@@ -10,6 +10,7 @@ public class Ellenallas extends Alkatresz{
         this.ertek = ertek;
     }
 
+
     public double getErtek() {
         return ertek;
     }
@@ -31,6 +32,6 @@ public class Ellenallas extends Alkatresz{
 
     @Override
     public String toString() {
-        return "Ellenallas: " + ertek + "Ara: " + getAr();
+        return "Ellenallas: " + ertek + " Ara: " + getAr();
     }
 }
