@@ -21,6 +21,6 @@ public class Major {
 
     @Override
     public String toString() {
-        return majors;
+        return "majors";
     }
 }
